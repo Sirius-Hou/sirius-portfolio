@@ -8,8 +8,6 @@
   background: linear-gradient(to left, rgb(27, 20, 41), rgb(20, 15, 35));
 } */
 
-
-
 body {
   margin: 0;
   height: 100%;
@@ -24,3 +22,4 @@ html {
   height: 100%;
   background-color: linear-gradient(to left, rgb(27, 20, 41), rgb(20, 15, 35)); /* Consistent gradient */
 }
+
