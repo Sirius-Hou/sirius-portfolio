@@ -1,0 +1,205 @@
+/* Main home page layout */
+.home-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+  margin: 100px auto;
+  padding: 0 2rem;
+  height: 700px;
+  overflow: visible;
+}
+
+/* Left text section */
+.home-left {
+  flex: 1;
+  padding: 2rem;
+  text-align: left;
+}
+
+.intro-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+  color: white;
+}
+
+.name-text {
+  font-family: 'Sen', sans-serif;
+  font-size: 75px;
+  font-weight: 800;
+  margin: 0;
+  color: white;
+}
+
+.description-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  margin-top: 20px;
+  color: white;
+  text-align: left;
+}
+
+/* Adjusting the role container and typing animation */
+.role-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow content to wrap */
+  align-items: center;
+  gap: 10px; /* Add space between static and dynamic text */
+  margin-top: 10px;
+}
+
+/* Static text before the typing animation */
+.role-static-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: white;
+}
+
+.type-container {
+  display: inline-block;
+}
+
+/* Right image section */
+/* .home-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-pic {
+  max-width: 80%;
+  border-radius: 10%;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+} */
+
+
+/* Social buttons container */
+.social-buttons {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 20px; /* Add space between icons */
+  margin-top: 20px; /* Add margin above the icons */
+}
+
+/* Style for each icon button */
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.icon {
+  color: #444;
+  font-size: 2.2em;
+}
+
+.icon-button:hover {
+  background-color: #53c1de;
+  transform: translateY(-3px);
+  cursor: pointer;
+}
+
+
+
+
+/* Specific style for email button (to differentiate) */
+.email-button {
+  background-color: #f0f0f0;
+}
+
+
+
+/* Container for the resume button with blur effect */
+/* Container for the resume button with blur effect */
+.resume-button-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px; /* Add margin to move button down */
+}
+
+/* Layer blur effect */
+.resume-button-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #2AA9DF, #AE0CA7);
+  filter: blur(10px);
+  z-index: 0; /* Set z-index to be below the button */
+  border-radius: 25px; /* Adjust to match button shape */
+  transition: filter 0.3s ease;
+}
+
+/* Resume button styling */
+.view-resume-button {
+  position: relative;
+  z-index: 1; /* Ensure button stays on top */
+  padding: 10px 30px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(to right, #2AA9DF, #AE0CA7);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+/* Hover state for button and blur effect */
+.resume-button-container:hover::before {
+  filter: blur(30px); /* Increase blur when hovering */
+}
+
+
+
+
+/* Container for the right section */
+.home-right {
+  position: relative; /* Allows absolute positioning for children */
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gradient background layer */
+.gradient-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #DC00D3, #0CFAF5);
+  filter: blur(100px); /* Adjusted blur */
+  z-index: 0;
+}
+
+/* Profile picture styling */
+.profile-pic {
+  position: relative; /* Position it above the gradient */
+  max-width: 80%;
+  border-radius: 10%;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1; /* Ensure it appears above the gradient */
+}
