@@ -12,11 +12,17 @@ html {
   );
 
   --imp-text-color: #c770f0;
+  --imp-text-color2: #53C1DE;
+
 
 }
 
 .purple {
   color: var(--imp-text-color) !important;
+}
+
+.blue {
+  color: var(--imp-text-color2) !important;
 }
 
 button:focus {
@@ -138,6 +144,19 @@ button:focus {
 #no-scroll {
   overflow: hidden;
   height: 100vh;
+}
+
+
+/* --------- */
+/*  Typing   */
+/* --------- */
+
+.custom-typewriter {
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #53c1de;
+  display: inline;
 }
 
 

@@ -63,20 +63,6 @@
   display: inline-block;
 }
 
-/* Right image section */
-/* .home-right {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.profile-pic {
-  max-width: 80%;
-  border-radius: 10%;
-  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
-} */
-
 
 /* Social buttons container */
 .social-buttons {
@@ -111,14 +97,10 @@
   cursor: pointer;
 }
 
-
-
-
 /* Specific style for email button (to differentiate) */
 .email-button {
   background-color: #f0f0f0;
 }
-
 
 
 /* Container for the resume button with blur effect */

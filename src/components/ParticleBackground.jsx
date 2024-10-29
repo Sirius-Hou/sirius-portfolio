@@ -10,7 +10,7 @@ const ParticleBackground = () => {
     canvas.height = window.innerHeight;
 
     let particlesArray = [];
-    const particleCount = Math.floor(canvas.width * canvas.height / 20000);
+    const particleDensity = 20000; // Adjust this value to control particle density
     const maxDistance = 120;
     const speedFactor = 0.2;
 
@@ -39,12 +39,16 @@ const ParticleBackground = () => {
     }
 
     function createParticles() {
-      particlesArray = [];
+      const particleCount = Math.floor(canvas.width * canvas.height / particleDensity);
       for (let i = 0; i < particleCount; i++) {
         const x = Math.random() * canvas.width;
         const y = Math.random() * canvas.height;
         particlesArray.push(new Particle(x, y));
       }
+    }
+
+    function addParticle(x, y) {
+      particlesArray.push(new Particle(x, y));
     }
 
     function handleParticles() {
@@ -60,11 +64,8 @@ const ParticleBackground = () => {
 
           if (distance < maxDistance) {
             ctx.beginPath();
-            const colorFactor = Math.random();
-            const r = Math.floor(255 * (1 - colorFactor));
-            const b = Math.floor(255 * colorFactor);
-            ctx.strokeStyle = `rgba(${r}, ${b}, 255, ${(1 - distance / maxDistance) * particle.opacity})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - distance / maxDistance) * particle.opacity})`;
+            ctx.lineWidth = 1;
             ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
             ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
             ctx.stroke();
@@ -82,14 +83,28 @@ const ParticleBackground = () => {
     createParticles();
     animate();
 
+    canvas.addEventListener("click", (event) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      addParticle(x, y);
+    });
+
     window.addEventListener("resize", () => {
+      const oldWidth = canvas.width;
+      const oldHeight = canvas.height;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      createParticles();
+
+      const newParticleCount = Math.floor(canvas.width * canvas.height / particleDensity) - particlesArray.length;
+      for (let i = 0; i < newParticleCount; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        particlesArray.push(new Particle(x, y));
+      }
     });
   }, []);
 
-  // return <canvas ref={canvasRef} id="canvas" className="particle-canvas"></canvas>;
   return (
     <canvas
       ref={canvasRef}
@@ -102,7 +117,7 @@ const ParticleBackground = () => {
         zIndex: -2, // Set to a low z-index to ensure it's behind everything
         width: "100%",
         height: "100%",
-        pointerEvents: "none", // Prevent mouse interaction with the canvas
+        pointerEvents: "auto", // Allow mouse interaction with the canvas
       }}
     ></canvas>
   );

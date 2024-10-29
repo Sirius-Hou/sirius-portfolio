@@ -1,0 +1,106 @@
+/* Main container for About section */
+.about-section {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  flex-direction: column;
+  min-height: 700px; /* Set fixed height */
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: transparent;
+  background: transparent !important;
+}
+
+/* Wrapper for photo and text */
+.about-container {
+  display: flex;
+  flex-direction: row; /* Arrange in a row */
+  flex-wrap: wrap; /* Allow wrapping */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Align items vertically */
+  max-width: 100%; /* Allow it to use full width */
+  margin: 0 auto;
+  gap: 5rem; /* Space between photo and text */
+  text-align: left; /* Align text to the left */
+}
+
+/* Photo section styling */
+.photo-wrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 300px; /* Set a maximum width for the photo wrapper */
+  opacity: 0; /* Start fully invisible */
+  transform: translateX(-50px); /* Start positioned to the left */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+}
+
+/* Class to apply when the photo is in view */
+.photo-wrapper.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateX(0); /* Move to original position */
+}
+
+.about-photo {
+  border-radius: 15px; /* Adjust the value as needed */
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.photo-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 20px); /* Adjust the value to make the background bigger */
+  height: calc(100% + 20px); /* Adjust the value to make the background bigger */
+  background-color: #276a8c;
+  border-radius: 15px; /* Same as the photo */
+  filter: blur(10px);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+/* Text section styling */
+.about-text {
+  flex: 1; /* Take remaining space */
+  text-align: left; /* Left align text */
+  max-width: 600px;
+  opacity: 0; /* Start fully invisible */
+  transform: translateX(50px); /* Start positioned to the right */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+}
+
+/* Class to apply when the text is in view */
+.about-text.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateX(0); /* Move to original position */
+}
+
+.about-title {
+  font-size: 2.5rem;
+  color: var(--imp-text-color);
+  margin-bottom: 0.5rem;
+}
+
+.about-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-description {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column; /* Stack vertically on small screens */
+    align-items: center; /* Center items in column layout */
+  }
+  .about-text {
+    text-align: center; /* Center text on small screens */
+  }
+}
