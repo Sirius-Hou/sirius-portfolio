@@ -3,6 +3,7 @@ import aboutPhoto from "../../assets/Sirius_Hou_LinkedIn_Profile_Picture.png";
 // import "./About.css";
 import "../../style.css";
 
+
 const About = () => {
   const aboutRef = useRef(null);
   const photoRef = useRef(null);
@@ -14,7 +15,6 @@ const About = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
           }
         });
       },

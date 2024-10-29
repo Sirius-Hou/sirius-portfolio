@@ -187,7 +187,7 @@ button:focus {
 }
 
 /* --------- */
-/* Navbar Section  */
+/*  Navbar   */
 /* --------- */
 .sticky {
   background-color: #1b1a2ea9 !important;
@@ -319,8 +319,29 @@ button:focus {
   width: 100%;
 }
 
+
+/* .navbar {
+  animation: topIn 0.5s ease-in-out forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+} */
+
+.brand-title {
+  animation: sideInLeft  0.5s ease-in-out forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+}
+
+#responsive-navbar-nav {
+  animation: topIn 0.5s ease-in-out forwards;
+  opacity: 0;
+  animation-delay: 0.3s;
+}
+
+
+
 /* --------- */
-/* Home section */
+/*   Home    */
 /* --------- */
 
 /* Main home page layout */
@@ -439,7 +460,7 @@ button:focus {
 }
 
 
-/* Container for the resume button with blur effect */
+
 /* Container for the resume button with blur effect */
 .resume-button-container {
   position: relative;
@@ -521,12 +542,74 @@ button:focus {
 
 
 
+/* Home section animations */
+.home-container {
+  --left-section-animation-name: LeftBottomIn;
+  --left-section-animation-duration: 0.6s;
+  --right-section-animation-name: RightBottomInWithScale;
+  --right-section-animation-duration: 1s;
+}
+
+.intro-text {
+  animation: var(--left-section-animation-name) var(--left-section-animation-duration) cubic-bezier(0.4, 0.0, 0.2, 1.4) forwards;
+  opacity: 0;
+  animation-delay: 0.1s;
+}
+
+.name-text {
+  animation: var(--left-section-animation-name) var(--left-section-animation-duration) cubic-bezier(0.4, 0.0, 0.2, 1.4) forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+}
+
+.role-container {
+  animation: var(--left-section-animation-name) var(--left-section-animation-duration) cubic-bezier(0.4, 0.0, 0.2, 1.4) forwards;
+  opacity: 0;
+  animation-delay: 0.3s;
+}
+
+.description-text {
+  animation: var(--left-section-animation-name) var(--left-section-animation-duration) cubic-bezier(0.4, 0.0, 0.2, 1.4) forwards;
+  opacity: 0;
+  animation-delay: 0.4s;
+}
+
+.social-buttons {
+  animation: var(--left-section-animation-name) var(--left-section-animation-duration) cubic-bezier(0.4, 0.0, 0.2, 1.4) forwards;
+  opacity: 0;
+  animation-delay: 0.5s;
+}
+
+.resume-button-container {
+  animation: var(--left-section-animation-name) var(--left-section-animation-duration) cubic-bezier(0.4, 0.0, 0.2, 1.4) forwards;
+  opacity: 0;
+  animation-delay: 0.6s;
+}
+
+
+.home-right {
+  animation: var(--right-section-animation-name) var(--right-section-animation-duration) cubic-bezier(0.4, 0.0, 0.2, 1.4) forwards;
+  opacity: 0;
+  animation-delay: 0.1s;
+}
+
+
 /* --------- */
 /*   About   */
 /* --------- */
 
 /* Main container for About section */
 .about-section {
+  --about-photo-animation-name: sideInLeft;
+  --about-photo-animation-duration: 0.6s;
+  --about-photo-animation-delay: 0s;
+  --about-photo-animation-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --about-text-animation-name: sideInRight;
+  --about-text-animation-duration: 0.6s;
+  --about-text-animation-delay: 0s;
+  --about-text-animation-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+
   display: flex;
   position: relative !important;
   justify-content: center; /* Centers horizontally */
@@ -539,7 +622,6 @@ button:focus {
   background: transparent !important;
   color: white;
 }
-
 
 /* Wrapper for photo and text */
 .about-container {
@@ -560,14 +642,13 @@ button:focus {
   display: inline-block;
   max-width: 300px; /* Set a maximum width for the photo wrapper */
   opacity: 0; /* Start fully invisible */
-  transform: translateX(-50px); /* Start positioned to the left */
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Apply transition */
 }
 
-/* Class to apply when the photo is in view */
 .photo-wrapper.visible {
   opacity: 1; /* Fully visible */
   transform: translateX(0); /* Move to original position */
+  animation: var(--about-photo-animation-name) var(--about-photo-animation-duration) var(--about-photo-animation-ease) var(--about-photo-animation-delay) forwards; /* Apply sideInLeft animation */
 }
 
 .about-photo {
@@ -598,14 +679,13 @@ button:focus {
   text-align: left; /* Left align text */
   max-width: 600px;
   opacity: 0; /* Start fully invisible */
-  transform: translateX(50px); /* Start positioned to the right */
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Apply transition */
 }
 
-/* Class to apply when the text is in view */
 .about-text.visible {
   opacity: 1; /* Fully visible */
   transform: translateX(0); /* Move to original position */
+  animation: var(--about-text-animation-name) var(--about-text-animation-duration) var(--about-text-animation-ease) var(--about-text-animation-delay) forwards; /* Apply sideInRight animation */
 }
 
 .about-title {
@@ -635,9 +715,8 @@ button:focus {
   }
 }
 
-
 /* --------- */
-/*   Skills  */
+/*  Skills   */
 /* --------- */
 
 /* Main container for Skills section */
@@ -749,7 +828,7 @@ button:focus {
 
 
 /* --------- */
-/*   Footer  */
+/*  Footer   */
 /* --------- */
 .footer {
   background-color: rgb(10, 4, 22);
@@ -816,7 +895,7 @@ button:focus {
 
 
 /* --------- */
-/* Projects */
+/* Projects  */
 /* --------- */
 /* .project-section {
   position: relative !important;
@@ -914,7 +993,7 @@ button:focus {
 
 
 /* --------- */
-/* Resume */
+/*  Resume   */
 /* --------- */
 
 .resume-section {
@@ -999,7 +1078,7 @@ button:focus {
   background: #fff;
   border: 2px solid #8a49a8;
 }
-
+/* 
 .like-item {
   padding-top: 10px !important;
   font-size: 1.1em !important;
@@ -1055,4 +1134,88 @@ button:focus {
 }
 .fork-btn-inner::after {
   display: none !important;
+} */
+
+
+
+/* --------- */
+/* Animations*/
+/* --------- */
+
+@keyframes sideInLeft {
+  from{
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to{
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes sideInRight {
+  from{
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to{
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes topIn {
+  from{
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to{
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes bottomIn {
+  from{
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to{
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes LeftBottomIn {
+  from {
+    transform: translateY(100%) translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%) translateX(0%);
+    opacity: 1;
+  }
+}
+
+
+@keyframes RightBottomIn {
+  from {
+    transform: translateY(100%) translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%) translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes RightBottomInWithScale {
+  from {
+    transform: translateY(100%) translateX(100%) scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%) translateX(0%) scale(1);
+    opacity: 1;
+  }
 }
