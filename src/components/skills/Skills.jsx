@@ -62,6 +62,7 @@ const Skills = () => {
       }
     };
   }, []);
+  
 
   return (
     <div id="skills" className="skills-section" ref={skillsRef}>
