@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import "./Skills.css";
+import "../../style.css";
 
 // Import icons for skills
 import CplusplusOriginal from "react-devicons/cplusplus/original";

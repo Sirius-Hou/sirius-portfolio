@@ -322,52 +322,8 @@ button:focus {
 /* --------- */
 /* Home section */
 /* --------- */
-.wave {
-  animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
-  animation-duration: 2.1s; /* Change to speed up or slow down */
-  animation-iteration-count: infinite; /* Never stop waving :) */
-  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
-  display: inline-block;
-}
 
-@keyframes wave-animation {
-  0% {
-    transform: rotate(0deg);
-  }
-  10% {
-    transform: rotate(14deg);
-  } /* The following five values can be played with to make the waving more or less extreme */
-  20% {
-    transform: rotate(-8deg);
-  }
-  30% {
-    transform: rotate(14deg);
-  }
-  40% {
-    transform: rotate(-4deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-  60% {
-    transform: rotate(0deg);
-  } /* Reset for the last half to pause */
-  100% {
-    transform: rotate(0deg);
-  }
-}
-#tsparticles {
-  position: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-  width: 100%;
-  height: 100%;
-}
-
-.home-header {
-  padding-top: 80px !important;
-}
-
+/* Main home page layout */
 .home-section {
   position: relative;
   z-index: -1;
@@ -378,142 +334,422 @@ button:focus {
   padding-top: 30px !important;
 }
 
-.home-content {
-  padding: 9rem 0 2rem !important;
-  color: whitesmoke;
+
+.home-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+  margin: 100px auto;
+  padding: 0 2rem;
+  height: 700px;
+  overflow: visible;
+}
+
+/* Left text section */
+.home-left {
+  flex: 1;
+  padding: 2rem;
   text-align: left;
 }
 
-.heading {
-  font-size: 2.4em !important;
-  padding-left: 50px !important;
+.intro-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+  color: white;
 }
 
-.heading-name {
-  font-size: 2.5em !important;
-  padding-left: 45px !important;
+.name-text {
+  font-family: 'Sen', sans-serif;
+  font-size: 75px;
+  font-weight: 800;
+  margin: 0;
+  color: white;
 }
 
-.main-name {
-  color: #cd5ff8;
+.description-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  margin-top: 20px;
+  color: white;
+  text-align: left;
 }
 
-.Typewriter__wrapper {
-  font-size: 2.2em !important;
-  color: #be6adf !important;
-  font-weight: 600 !important;
-}
-.Typewriter__cursor {
-  font-size: 2.4em !important;
-  color: #b562d6 !important;
-}
-
-@media (max-width: 767px) {
-  .Typewriter__wrapper {
-    font-size: 1.4em !important;
-    font-weight: 500 !important;
-    position: absolute !important;
-  }
-  .Typewriter__cursor {
-    display: none !important;
-  }
+/* Adjusting the role container and typing animation */
+.role-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow content to wrap */
+  align-items: center;
+  gap: 10px; /* Add space between static and dynamic text */
+  margin-top: 10px;
 }
 
-.myAvtar {
-  justify-content: center !important;
-  padding-top: 9em !important;
+/* Static text before the typing animation */
+.role-static-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: white;
 }
 
-@media (max-width: 767px) {
-  .myAvtar {
-    padding-top: 2em !important;
-    padding-bottom: 2em !important;
-  }
+.type-container {
+  display: inline-block;
 }
 
-.home-about-section {
+
+/* Social buttons container */
+.social-buttons {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 20px; /* Add space between icons */
+  margin-top: 20px; /* Add margin above the icons */
+}
+
+/* Style for each icon button */
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.icon {
+  color: #444;
+  font-size: 2.2em;
+}
+
+.icon-button:hover {
+  background-color: #53c1de;
+  transform: translateY(-3px);
+  cursor: pointer;
+}
+
+/* Specific style for email button (to differentiate) */
+.email-button {
+  background-color: #f0f0f0;
+}
+
+
+/* Container for the resume button with blur effect */
+/* Container for the resume button with blur effect */
+.resume-button-container {
   position: relative;
-  padding-bottom: 70px !important;
-  padding-top: 70px !important;
+  display: inline-block;
+  margin-top: 20px; /* Add margin to move button down */
 }
 
-.home-about-description {
-  color: white !important;
-  padding-top: 100px !important;
-  padding-bottom: 20px !important;
+/* Layer blur effect */
+.resume-button-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #2AA9DF, #AE0CA7);
+  filter: blur(10px);
+  z-index: 0; /* Set z-index to be below the button */
+  border-radius: 25px; /* Adjust to match button shape */
+  transition: filter 0.3s ease;
+}
+
+/* Resume button styling */
+.view-resume-button {
+  position: relative;
+  z-index: 1; /* Ensure button stays on top */
+  padding: 10px 30px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(to right, #2AA9DF, #AE0CA7);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+/* Hover state for button and blur effect */
+.resume-button-container:hover::before {
+  filter: blur(30px); /* Increase blur when hovering */
+}
+
+/* Container for the right section */
+.home-right {
+  position: relative; /* Allows absolute positioning for children */
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gradient background layer */
+.gradient-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #DC00D3, #0CFAF5);
+  filter: blur(100px); /* Adjusted blur */
+  z-index: 0;
+}
+
+/* Profile picture styling */
+.profile-pic {
+  position: relative; /* Position it above the gradient */
+  max-width: 80%;
+  border-radius: 10%;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1; /* Ensure it appears above the gradient */
+}
+
+
+
+/* --------- */
+/*   About   */
+/* --------- */
+
+/* Main container for About section */
+.about-section {
+  display: flex;
+  position: relative !important;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  flex-direction: column;
+  min-height: 700px; /* Set fixed height */
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: transparent;
+  background: transparent !important;
+  color: white;
+}
+
+
+/* Wrapper for photo and text */
+.about-container {
+  display: flex;
+  flex-direction: row; /* Arrange in a row */
+  flex-wrap: wrap; /* Allow wrapping */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Align items vertically */
+  max-width: 100%; /* Allow it to use full width */
+  margin: 0 auto;
+  gap: 5rem; /* Space between photo and text */
+  text-align: left; /* Align text to the left */
+}
+
+/* Photo section styling */
+.photo-wrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 300px; /* Set a maximum width for the photo wrapper */
+  opacity: 0; /* Start fully invisible */
+  transform: translateX(-50px); /* Start positioned to the left */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+}
+
+/* Class to apply when the photo is in view */
+.photo-wrapper.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateX(0); /* Move to original position */
+}
+
+.about-photo {
+  border-radius: 15px; /* Adjust the value as needed */
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.photo-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 20px); /* Adjust the value to make the background bigger */
+  height: calc(100% + 20px); /* Adjust the value to make the background bigger */
+  background-color: #276a8c;
+  border-radius: 15px; /* Same as the photo */
+  filter: blur(10px);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+/* Text section styling */
+.about-text {
+  flex: 1; /* Take remaining space */
+  text-align: left; /* Left align text */
+  max-width: 600px;
+  opacity: 0; /* Start fully invisible */
+  transform: translateX(50px); /* Start positioned to the right */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+}
+
+/* Class to apply when the text is in view */
+.about-text.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateX(0); /* Move to original position */
+}
+
+.about-title {
+  font-size: 2.5rem;
+  color: var(--imp-text-color);
+  margin-bottom: 0.5rem;
+}
+
+.about-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-description {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column; /* Stack vertically on small screens */
+    align-items: center; /* Center items in column layout */
+  }
+  .about-text {
+    text-align: center; /* Center text on small screens */
+  }
+}
+
+
+/* --------- */
+/*   Skills  */
+/* --------- */
+
+/* Main container for Skills section */
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem;
+  background: transparent;
+  opacity: 0; /* Start fully invisible */
+  transform: translateY(50px); /* Start positioned below */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+}
+
+/* Class to apply when the section is in view */
+.skills-section.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Move to original position */
+}
+
+/* Title styling */
+.skills-title {
+  font-size: 2.5rem; /* Ensure this matches the about-title */
+  color: var(--imp-text-color);
+  margin-bottom: 2rem;
   text-align: center;
 }
 
-.home-about-body {
-  padding-top: 50px;
-  font-size: 1.2em !important;
+/* Category container */
+.skills-category {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 3rem;
+}
+
+/* Category title styling */
+.category-title {
+  font-size: 1.8rem;
+  color: var(--imp-text-color);
+  margin-bottom: 1.5rem;
   text-align: left;
 }
 
-.home-about-social {
-  text-align: center !important;
-  padding-top: 25px;
-  color: white !important;
+/* Container for skills within each category */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
-.home-about-social-links {
-  justify-content: center !important;
-  padding-top: 15px !important;
-  display: inline-block !important;
-  position: relative !important;
-  padding-inline-start: 0 !important;
+/* Each skill item */
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Distribute space evenly */
+  width: 120px; /* Adjust width as needed */
+  padding: 1rem 0.5rem 0.2rem 0.5rem; /* Increased padding-top */
+  border-radius: 10px; /* Curved corners */
+  background: rgba(255, 255, 255, 0.2); /* Dimmer transparency */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+  transition: transform 0.2s; /* Optional: Add a hover effect */
 }
 
-.home-social-icons {
-  position: relative !important;
-  display: inline-block !important;
-  width: 40px !important;
-  height: 40px !important;
-  text-align: center !important;
-  font-size: 1.2em !important;
-  line-height: 2em !important;
-  background: rgba(255, 255, 255, 0.972) !important;
-  border-radius: 50% !important;
-  transition: 0.5s !important;
+.skill-item:hover {
+  transform: scale(1.05); /* Optional: Slightly enlarge on hover */
 }
 
-.home-social-icons::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+/* Skill logo styling */
+.skill-logo {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: #68187a;
-  transition: 0.5s;
-  transform: scale(0.9);
-  z-index: -1;
+  background: rgba(255, 255, 255, 0.8); /* Increased opacity for brighter background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 0.3rem; /* Reduced margin-bottom */
 }
 
-.home-social-icons:hover::before {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #801f95;
+.skill-logo img {
+  width: 50px;
+  height: auto;
 }
 
-.home-social-icons:hover {
-  color: #87209e;
-  box-shadow: 0 0 5px #87209e;
-  text-shadow: 0 0 2px #87209e;
+/* Skill name styling */
+.skill-name {
+  font-size: 1rem; /* Increased font size for better readability */
+  text-align: center;
+  margin-top: 0.2rem; /* Reduced margin-top */
+  color: var(--imp-text-color); /* Ensure text color is bright */
+  flex-grow: 1; /* Allow the name to take up remaining space */
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
 }
 
-.social-icons {
-  display: inline-block !important;
-  padding-right: 15px;
-  padding-left: 15px;
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+  .skills-title {
+    font-size: 2rem;
+  }
+  .category-title {
+    font-size: 1.5rem;
+  }
 }
 
-.icon-colour {
-  color: #700c86 !important;
-}
 
 /* --------- */
-/* Footer */
+/*   Footer  */
 /* --------- */
 .footer {
   background-color: rgb(10, 4, 22);
@@ -527,8 +763,12 @@ button:focus {
 
 .footer-body {
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center !important;
 }
+
 
 @media (max-width: 767px) {
   .footer-copywright {
@@ -546,19 +786,39 @@ button:focus {
   margin-top: 0.5em !important;
   margin-bottom: 0.5em !important;
 }
+
 .footer-icons {
-  margin-top: 0.5em !important;
-  margin-bottom: 0.5em !important;
-  padding: 0 !important;
+  display: flex;
+  justify-content: center; /* Centers the icons horizontally */
+  align-items: center; /* Centers the icons vertically */
+  list-style: none; /* Removes the bullet points */
+  padding: 0; /* Removes padding */
+  margin: 0; /* Removes margin */
+}
+
+.footer-icons li {
+  margin: 0 10px; /* Adds horizontal spacing between icons */
+}
+
+.footer-icons a {
+  font-size: 1.5em; /* Adjusts icon size */
+  color: white; /* Sets icon color to white */
+  transition: transform 0.2s; /* Adds a transition for hover effect */
+}
+
+.footer-icons a:hover {
+  transform: scale(1.2); /* Scales up icon on hover */
 }
 
 .blockquote-footer {
   color: #a588c0 !important;
 }
+
+
 /* --------- */
 /* Projects */
 /* --------- */
-.project-section {
+/* .project-section {
   position: relative !important;
   padding-top: 150px !important;
   padding-bottom: 30px !important;
@@ -650,68 +910,9 @@ button:focus {
   font-size: 2.3em !important;
   font-weight: 500 !important;
   padding-top: 10px !important;
-}
+} */
 
-/* --------- */
-/* About */
-/* --------- */
 
-.about-section {
-  position: relative !important;
-  padding-top: 150px !important;
-  padding-bottom: 30px !important;
-  background-image: var(--section-background-color) !important;
-  color: white !important;
-}
-
-.tech-icons {
-  font-size: 4.5em !important;
-  margin: 15px !important;
-  padding: 10px !important;
-  opacity: 0.93 !important;
-  border: 1.7px solid rgba(200, 137, 230, 0.637) !important;
-  vertical-align: middle !important;
-  text-align: center !important;
-  border-radius: 5px !important;
-  display: table !important;
-  box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.137) !important;
-  overflow: hidden !important;
-  transition: all 0.4s ease 0s !important;
-}
-
-@media (max-width: 767px) {
-  .tech-icons {
-    margin: 10px !important;
-  }
-}
-
-.tech-icons:hover {
-  transform: scale(1.05) !important;
-  overflow: hidden !important;
-  border: 2.2px solid rgba(197, 115, 230, 0.883) !important;
-}
-.tech-icon-images {
-  padding: 20px !important;
-  line-height: 1.6 !important;
-}
-
-.quote-card-view {
-  border: none !important;
-  color: white !important;
-  background-color: transparent !important;
-}
-
-.about-activity {
-  list-style: none !important;
-  text-align: left !important;
-  padding-left: 1px !important;
-}
-
-@media (max-width: 767px) {
-  .about-img {
-    padding-top: 0 !important;
-  }
-}
 /* --------- */
 /* Resume */
 /* --------- */

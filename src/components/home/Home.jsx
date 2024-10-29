@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaMailBulk  } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Type from "./Type";
-import "./Home.css";
 import profilePic from "../../assets/Sirius Hou - photo.jpg";
 import "../../style.css";
 

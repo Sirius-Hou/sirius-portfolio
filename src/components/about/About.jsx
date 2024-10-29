@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import aboutPhoto from "../../assets/Sirius_Hou_LinkedIn_Profile_Picture.png";
-import "./About.css";
+// import "./About.css";
+import "../../style.css";
 
 const About = () => {
   const aboutRef = useRef(null);
