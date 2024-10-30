@@ -23,7 +23,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const [load, upadateLoad] = useState(false); // CHANGE THIS BACK TO TRUE WHEN DONE TESTING!!!
+  const [load, upadateLoad] = useState(true); // CHANGE THIS BACK TO TRUE WHEN DONE TESTING!!!
   const location = useLocation();
 
   useEffect(() => {
