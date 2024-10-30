@@ -18,6 +18,7 @@ import { CgFileDocument } from "react-icons/cg";
 import { VscTools } from "react-icons/vsc";
 import { HiOutlinePhoto } from "react-icons/hi2";
 import { RiContactsLine } from "react-icons/ri";
+import { MdOutlineWorkOutline } from "react-icons/md";
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
@@ -35,7 +36,7 @@ function NavBar() {
   }
 
   window.addEventListener("scroll", scrollHandler);
-  
+
   return (
     <Navbar
       expanded={expand}
@@ -64,6 +65,7 @@ function NavBar() {
                 Home
               </Nav.Link>
             </Nav.Item>
+
             <Nav.Item>
               <Nav.Link href="/#about" onClick={() => updateExpanded(false)}>
                 {showIcons && (
@@ -72,14 +74,25 @@ function NavBar() {
                 About
               </Nav.Link>
             </Nav.Item>
-            <Nav.Item>
+
+            {/* <Nav.Item>
               <Nav.Link href="/#skills" onClick={() => updateExpanded(false)}>
                 {showIcons && (
                   <VscTools style={{ marginBottom: "5px", marginRight: "3px" }} />
                 )}
                 Skills
               </Nav.Link>
+            </Nav.Item> */}
+
+            <Nav.Item>
+              <Nav.Link href="/#work" onClick={() => updateExpanded(false)}>
+                {showIcons && (
+                  <MdOutlineWorkOutline style={{ marginBottom: "5px", marginRight: "3px" }} />
+                )}
+                Work
+              </Nav.Link>
             </Nav.Item>
+
             <Nav.Item>
               <Nav.Link href="/#projects" onClick={() => updateExpanded(false)}>
                 {showIcons && (
@@ -88,6 +101,7 @@ function NavBar() {
                 Projects
               </Nav.Link>
             </Nav.Item>
+
             <Nav.Item>
               <Nav.Link href="/#contact" onClick={() => updateExpanded(false)}>
                 {showIcons && (
@@ -106,6 +120,7 @@ function NavBar() {
                 Resume
               </Nav.Link>
             </Nav.Item>
+
             <Nav.Item>
               <Nav.Link as={Link} to="/photos" onClick={() => updateExpanded(false)}>
                 {showIcons && (
@@ -114,6 +129,7 @@ function NavBar() {
                 Photography
               </Nav.Link>
             </Nav.Item>
+
           </Nav>
         </Navbar.Collapse>
       </Container>

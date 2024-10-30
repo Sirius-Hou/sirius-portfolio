@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollToSection from "./components/ScrollToSection";
 import Resume from "./components/resume/Resume";
+import Work from "./components/work/Work";
 import ParticleBackground from "./components/ParticleBackground";
 
 import {
@@ -60,6 +61,7 @@ function App() {
                 <Home />
                 <About />
                 <Skills />
+                <Work />
                 <ScrollToSection sectionId={getSectionIdFromHash()} />
               </div>
             } />
