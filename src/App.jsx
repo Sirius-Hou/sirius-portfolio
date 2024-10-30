@@ -11,6 +11,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import ScrollToSection from "./components/ScrollToSection";
 import Resume from "./components/resume/Resume";
 import Work from "./components/work/Work";
+import Projects from "./components/projects/Projects";
 import ParticleBackground from "./components/ParticleBackground";
 
 import {
@@ -23,7 +24,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const [load, upadateLoad] = useState(true); // CHANGE THIS BACK TO TRUE WHEN DONE TESTING!!!
+  const [load, upadateLoad] = useState(false); // CHANGE THIS BACK TO TRUE WHEN DONE TESTING!!!
   const location = useLocation();
 
   useEffect(() => {
@@ -62,6 +63,7 @@ function App() {
                 <About />
                 <Skills />
                 <Work />
+                <Projects />
                 <ScrollToSection sectionId={getSectionIdFromHash()} />
               </div>
             } />

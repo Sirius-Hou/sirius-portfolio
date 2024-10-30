@@ -1,12 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import $ from 'jquery';
 import './Work.css';
-import christieImg from '../../assets/work/christie1.jpg';
+import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
+import { IoIosClose } from 'react-icons/io';
+import christieImg from '../../assets/work/christie2.jpg';
 import fordImg from '../../assets/work/ford1.jpg';
 import bhvrImg from '../../assets/work/bhvr2.jpg';
 import uwImg from '../../assets/work/uw1.jpg';
 
 const Work = () => {
+  const [activeModal, setActiveModal] = useState(null);
+  const [closing, setClosing] = useState(false);
+
   useEffect(() => {
     // Function to check if an element is in the viewport
     function isInViewport(element) {
@@ -14,7 +19,6 @@ const Work = () => {
       const elementBottom = elementTop + $(element).outerHeight();
       const viewportTop = $(window).scrollTop();
       const viewportFourFifth = viewportTop + ($(window).height() / 5) * 4;
-
       return elementBottom > viewportTop && elementTop < viewportFourFifth;
     }
 
@@ -67,6 +71,59 @@ const Work = () => {
     $('#shell').timeline();
   }, []);
 
+  const modalsContent = [
+    {
+      title: "Christie Digital Systems",
+      subtitle: "Application Software Developer (C++)",
+      period: "Sep 2024 - Present",
+      text: [
+        "Developed a black level correction algorithm with MATLAB to address brightness and color inconsistencies in laser projectors; Integrated into Hawkeye calibration software using C++ and Qt framework, improving the color accuracy by over 50%.",
+        "Enhanced Hawkeye’s web UI using JavaScript to add dynamic control sliders for real-time RGB adjustments, streamlined the calibration process and significantly improved user experience. (client commented 'intuitive and convenient to use')"
+      ]
+    },
+    {
+      title: "Ford Motor Company",
+      subtitle: "Software Developer (Data Collection Platform)",
+      period: "Jan 2024 - Apr 2024",
+      text: [
+        "Maintained codebase for FNV4 Data Collection Platform using C++, improved integration with real-time signal processing systems.",
+        "Developed a multi-threaded data ingestion service that optimized data flow from vehicle sensors, reduced processing latency by 23%.",
+        "Built a robust testing framework using Google Test and Google Mock, covering over 90% of the platform’s core modules and ensuring stability during the transition from FNV3 to FNV4 architectures."
+      ]
+    },
+    {
+      title: "Behaviour Interactive",
+      subtitle: "Software Engineer (Unreal Engine Tool Dev)",
+      period: "May 2023 - Aug 2023",
+      text: [
+        "Developed Unreal Engine components using C++ for real-time, in-editor actor collision detection with customizable visual indicators, allowing designers to visualize collisions without launching the game, streamlined level design and boosted team productivity by ~40%.",
+        "Optimized a custom Unreal Engine plugin (Tile Editor) to automate the conversion of over 700 game scene tiles from blueprints to levels, supporting advanced foliage editing, saving over 100 hours of manual work and boosting design team efficiency by ~30%."
+      ]
+    },
+    {
+      title: "University of Waterloo",
+      subtitle: "Instructional Support Assistant",
+      period: "Aug 2022 - Dec 2022",
+      text: [
+        "Performed UI and API quality assurance tests for the Android SES application, identifying and reporting bugs for timely resolution.",
+        "Constructed C++ configuration scripts for the auto-grading system (Lint R) to automated assignment assessments and feedback.",
+        'Conducted weekly office hours, tutorials, and pre-exam review sessions. (Praised by students as "encouraging and supportive.")'
+      ]
+    }
+  ];
+
+  const openModal = (index) => {
+    setActiveModal(index);
+  };
+
+  const closeModal = () => {
+    setClosing(true);
+    setTimeout(() => {
+      setActiveModal(null);
+      setClosing(false);
+    }, 300); // Match with the popOut animation duration
+  };
+
   return (
     <div className="work-section" id="work">
       <div className="shell" id="shell">
@@ -75,39 +132,44 @@ const Work = () => {
           <h3 className="subtitle">My Career Path</h3>
         </div>
         <div className="timeline">
-          <div className="item" data-text="Sep 2024 - Present">
-            <div className="content">
-              <img src={christieImg} alt="Experience" className="img" />
-              <h2 className="content-title">Christie Digital Systems</h2>
-              <p className="content-desc">Application Software Developer (C++)</p>
+          {modalsContent.map((content, index) => (
+            <div
+              key={index}
+              className="item"
+              data-text={content.period}
+              onClick={() => openModal(index)}
+            >
+              <div className="content">
+                <img src={[christieImg, fordImg, bhvrImg, uwImg][index]} alt="Experience" className="img" />
+                <h2 className="content-title">{content.title}</h2>
+                <p className="content-desc">{content.subtitle}</p>
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
+      </div>
 
-          <div className="item" data-text="Ford Company of Canada Limited">
-            <div className="content">
-              <img src={fordImg} alt="Experience" className="img" />
-              <h2 className="content-title">Ford Motor</h2>
-              <p className="content-desc">Software Developer (Data Collection Platform)</p>
-            </div>
-          </div>
-
-          <div className="item" data-text="Behaviour Interactive">
-            <div className="content">
-              <img src={bhvrImg} alt="Experience" className="img" />
-              <h2 className="content-title">Behaviour Interactive</h2>
-              <p className="content-desc">Software Engineer (Unreal Engine Tool Dev)</p>
-            </div>
-          </div>
-
-          <div className="item" data-text="University of Waterloo">
-            <div className="content">
-              <img src={uwImg} alt="Experience" className="img" />
-              <h2 className="content-title">University of Waterloo</h2>
-              <p className="content-desc">Instructional Support Assistant</p>
+      {activeModal !== null && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className={`modal-content ${closing ? 'closing' : ''}`} onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>
+              <IoIosClose />
+            </button>
+            <h2 className="modal-title">{modalsContent[activeModal]?.title}</h2>
+            <h3 className="modal-subtitle">{modalsContent[activeModal]?.subtitle}</h3>
+            <div className="modal-bullet-container">
+              {modalsContent[activeModal]?.text.map((item, idx) => (
+                <div key={idx} className="modal-bullet">
+                  <div className="bullet-icon-container">
+                    <MdOutlineKeyboardArrowRight className="bullet-icon" />
+                  </div>
+                  <div className="bullet-text">{item}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

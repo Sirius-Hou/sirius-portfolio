@@ -108,10 +108,8 @@
   opacity: 0;
   right: calc(-100% - 40px);
   font: 400 20px "";
-  font-family: 'Inter', sans-serif !important; /* Change to your desired font */
-  /* letter-spacing: 5px; */
+  font-family: ui-sans-serif, system-ui !important;
 }
-
 
 .item:nth-child(even) {
   align-self: flex-end;
@@ -193,3 +191,117 @@
     left: 40px;
   }
 }
+
+/* Modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  width: 80%;
+  max-width: 800px;
+  height: 30rem;
+  text-align: center;
+  animation: popIn 0.3s ease-out;
+  position: relative;
+  backdrop-filter: blur(10px); /* Blur effect inside the modal */
+}
+
+.modal-title {
+  color: #42D3E7; /* Blue color for title */
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.modal-subtitle {
+  color: rgb(199, 112, 240);
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.modal-bullet-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  align-items: flex-start; /* Align items to the left */
+}
+
+.modal-bullet {
+  display: flex;
+  align-items: flex-start; /* Align icon to the top of text */
+}
+
+.bullet-icon-container {
+  margin-right: 8px;
+  margin-top: 5px; /* Adjust icon's top margin to align at top */
+}
+
+.bullet-icon {
+  color: #42D3E7; /* Blue color for bullet icon */
+  font-size: 30px;
+}
+
+.bullet-text {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  text-align: left;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #42D3E7;
+}
+
+/* Animation for modal */
+@keyframes popIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Add the pop-out animation for dismissal */
+@keyframes popOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+.modal-content.closing {
+  animation: popOut 0.3s ease-out;
+}
+
